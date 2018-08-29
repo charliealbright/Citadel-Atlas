@@ -4,6 +4,7 @@
   "description": "An interactive map for the game Citadel: Forged with Fire",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "test"
   },
   "repository": {
