@@ -17,6 +17,12 @@
   },
   "homepage": "https://github.com/charliealbright/Citadel-Atlas#readme",
   "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
     "npm": "^6.4.0"
+  },
+  "devDependencies": {
+    "request": "^2.81.0",
+    "tape": "^4.7.0"
   }
 }
