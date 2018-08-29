@@ -1,0 +1,22 @@
+{
+  "name": "citadel-atlas",
+  "version": "1.0.0",
+  "description": "An interactive map for the game Citadel: Forged with Fire",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charliealbright/Citadel-Atlas.git"
+  },
+  "author": "Charlie Albright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charliealbright/Citadel-Atlas/issues"
+  },
+  "homepage": "https://github.com/charliealbright/Citadel-Atlas#readme",
+  "dependencies": {
+    "npm": "^6.4.0"
+  }
+}
