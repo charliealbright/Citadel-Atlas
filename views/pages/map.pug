@@ -2,7 +2,7 @@ extends layout.pug
 
 block content
     #map
-    #leg_title 
+    #leg_title
         span#leg_items Map Legend
     #leg
         each layer, i in jmap
@@ -10,11 +10,19 @@ block content
             span#leg_items #{layer.name}
             br
     script(type='text/javascript').
-        var map = L.map('map').setView([#{lat},#{lng}], 14);
-        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
-        
+        var map = L.map('map', {
+            crs: L.CRS.Simple,
+            minZoom: 1
+        });
+
+        var bounds = [[0,0], [600,600]];
+        var image = L.imageOverlay('Ignus_Map.jpg', bounds).addTo(map);
+        map.fitBounds(bounds);
+
+        var sol = L.latLng([ 145, 175.2 ]);
+        L.marker(sol).addTo(map);
+        map.setView( [70, 120], 1);
+
         $.getJSON('/maplayers',function(result){
             $.each(result, function(i, mlayer){
                 //alert(mlayer.name);
@@ -22,7 +30,7 @@ block content
                 $.getJSON('/mapjson/' + mlayer.name, function(data) { addLayer(data, mlayer.name ) });
             });
         });
-  
+
         function addLayer(layer, name) {
             var leaf_layer;
             if (layer.type == "MultiPoint") {
@@ -55,9 +63,9 @@ block content
                  });
             }
             leaf_layer.addTo(map);
-            
+
             $('#' + name).click(function(e) {
-                
+
                 if (map.hasLayer(leaf_layer)) {
                     map.removeLayer(leaf_layer);
                 } else {

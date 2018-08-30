@@ -17,7 +17,7 @@ var JsonSchema = new Schema({
     name: String,
     type: Schema.Types.Mixed
 });
- 
+
 // Mongoose Model definition
 var Json = mongoose.model('JString', JsonSchema, 'layer_collection');
 
@@ -27,7 +27,7 @@ app.set('port', (process.env.PORT || 5000));
 
 var path = require ('path');
 app.use(express.static(path.join(__dirname + '/public')));
-
+app.use(express.static(path.join(__dirname + '/images')));
 // views is directory for all template files
 app.set('views', path.join(__dirname + '/views/pages'));
 app.set('view engine', 'pug');
@@ -58,7 +58,7 @@ app.get('/mapjson/:name', function (req, res) {
         });
     }
 });
- 
+
 /* GET Map page. */
 app.get('/map', function(req,res) {
     var db = req.db;
