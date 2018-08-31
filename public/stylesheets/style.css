@@ -2,10 +2,15 @@ img {
     border: 0px;
     box-shadow: 0 0 0px;
   }
-  html, body {
+
+body {
+    padding: 0;
+    margin: 0;
+}
+html, body, #map {
     height: 100%;
-    overflow: hidden;
-  }
+    width: 100vw;
+}
   #header_wrap {
     height: 100px;
   }
