@@ -1,8 +1,6 @@
 var express = require('express');
 var app = express();
 
-var gridlines = require('./resources/data.json');
-
 app.set('port', (process.env.PORT || 5000));
 
 //app.use(express.static(__dirname + '/public'));
@@ -38,7 +36,10 @@ app.get('/mapjson/:name', function (req, res) {
 
 /* GET Map page. */
 app.get('/map', function(req,res) {
-  res.render('map', {gridlines: gridlines});
+  var gridlines = require('./resources/gridlines.json');
+  res.render('map', {
+    gridlines: gridlines
+  });
 });
 
 module.exports = app;
