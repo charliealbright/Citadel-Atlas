@@ -30,88 +30,101 @@ block content
         var fourFour = L.latLng([ 400, 400 ]);
 
         // Horizontal gridlines
-
-        L.polyline([
-            [100, -1.89],
-            [100, 601.89]
-        ], {
+        var obj = !{JSON.stringify(gridlines)};
+        var gridlines = obj.gridlines;
+        console.log(gridlines);
+        for (const gridline of gridlines) {
+          console.log(gridline);
+          L.polyline([
+            gridline.start,
+            gridline.end
+          ], {
             color: '#000000',
             weight: 2
-        }).addTo(map);
+          }).addTo(map);
+        }
+        
+        //- L.polyline([
+        //-     [100, -1.89],
+        //-     [100, 601.89]
+        //- ], {
+        //-     color: '#000000',
+        //-     weight: 2
+        //- }).addTo(map);
 
-        L.polyline([
-            [200, -1.89],
-            [200, 601.89]
-        ], {
-            color: '#000000',
-            weight: 2
-        }).addTo(map);
+        //- L.polyline([
+        //-     [200, -1.89],
+        //-     [200, 601.89]
+        //- ], {
+        //-     color: '#000000',
+        //-     weight: 2
+        //- }).addTo(map);
 
-        L.polyline([
-            [300, -1.89],
-            [300, 601.89]
-        ], {
-            color: '#000000',
-            weight: 2
-        }).addTo(map);
+        //- L.polyline([
+        //-     [300, -1.89],
+        //-     [300, 601.89]
+        //- ], {
+        //-     color: '#000000',
+        //-     weight: 2
+        //- }).addTo(map);
 
-        L.polyline([
-            [400, -1.89],
-            [400, 601.89]
-        ], {
-            color: '#000000',
-            weight: 2
-        }).addTo(map);
+        //- L.polyline([
+        //-     [400, -1.89],
+        //-     [400, 601.89]
+        //- ], {
+        //-     color: '#000000',
+        //-     weight: 2
+        //- }).addTo(map);
 
-        L.polyline([
-            [500, -1.89],
-            [500, 601.89]
-        ], {
-            color: '#000000',
-            weight: 2
-        }).addTo(map);
+        //- L.polyline([
+        //-     [500, -1.89],
+        //-     [500, 601.89]
+        //- ], {
+        //-     color: '#000000',
+        //-     weight: 2
+        //- }).addTo(map);
 
-        // Vertical gridlines
+        //- // Vertical gridlines
 
-        L.polyline([
-            [-5.47, 100],
-            [599, 100]
-        ], {
-            color: '#000000',
-            weight: 2
-        }).addTo(map);
+        //- L.polyline([
+        //-     [-5.47, 100],
+        //-     [599, 100]
+        //- ], {
+        //-     color: '#000000',
+        //-     weight: 2
+        //- }).addTo(map);
 
-        L.polyline([
-            [-5.47, 200],
-            [599, 200]
-        ], {
-            color: '#000000',
-            weight: 2
-        }).addTo(map);
+        //- L.polyline([
+        //-     [-5.47, 200],
+        //-     [599, 200]
+        //- ], {
+        //-     color: '#000000',
+        //-     weight: 2
+        //- }).addTo(map);
 
-        L.polyline([
-            [-5.47, 300],
-            [599, 300]
-        ], {
-            color: '#000000',
-            weight: 2
-        }).addTo(map);
+        //- L.polyline([
+        //-     [-5.47, 300],
+        //-     [599, 300]
+        //- ], {
+        //-     color: '#000000',
+        //-     weight: 2
+        //- }).addTo(map);
 
-        L.polyline([
-            [-5.47, 400],
-            [599, 400]
-        ], {
-            color: '#000000',
-            weight: 2
-        }).addTo(map);
+        //- L.polyline([
+        //-     [-5.47, 400],
+        //-     [599, 400]
+        //- ], {
+        //-     color: '#000000',
+        //-     weight: 2
+        //- }).addTo(map);
 
-        L.polyline([
-            [-5.47, 500],
-            [599, 500]
-        ], {
-            color: '#000000',
-            weight: 2
-        }).addTo(map);
+        //- L.polyline([
+        //-     [-5.47, 500],
+        //-     [599, 500]
+        //- ], {
+        //-     color: '#000000',
+        //-     weight: 2
+        //- }).addTo(map);
 
         L.marker(threeFive).bindPopup("<h4>Battle Plains of Talus</h4><p>Levels: 35-60</p>").addTo(map);
         L.marker(threeFour).bindPopup("3.00N, 4.00E").addTo(map);

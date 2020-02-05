@@ -1,25 +1,7 @@
 var express = require('express');
 var app = express();
 
-// Mongoose import
-var mongoose = require('mongoose');
-
-// Mongoose connection to MongoDB
-mongoose.connect('mongodb://user0:password0@ds153460.mlab.com:53460/mappingmtl', function (error) {
-    if (error) {
-        console.log(error);
-    }
-});
-
-// Mongoose Schema definition
-var Schema = mongoose.Schema;
-var JsonSchema = new Schema({
-    name: String,
-    type: Schema.Types.Mixed
-});
-
-// Mongoose Model definition
-var Json = mongoose.model('JString', JsonSchema, 'layer_collection');
+var gridlines = require('./resources/data.json');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -31,11 +13,6 @@ app.use(express.static(path.join(__dirname + '/images')));
 // views is directory for all template files
 app.set('views', path.join(__dirname + '/views/pages'));
 app.set('view engine', 'pug');
-//app.set('view engine', 'ejs');
-
-app.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
-});
 
 //routes/index.js
 /* GET layers json data. */
@@ -61,14 +38,7 @@ app.get('/mapjson/:name', function (req, res) {
 
 /* GET Map page. */
 app.get('/map', function(req,res) {
-    var db = req.db;
-    Json.find({},{}, function(err,docs){
-        res.render('map', {
-            "jmap" : docs,
-            lat : 45.501552,
-            lng : - 73.593094
-        });
-    });
+  res.render('map', {gridlines: gridlines});
 });
 
 module.exports = app;
