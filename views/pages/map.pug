@@ -8,21 +8,27 @@ block content
         var corner2 = L.latLng(600, 600)
         var bounds = L.latLngBounds(corner1, corner2);
 
+        var towerIcon = L.icon({
+          iconUrl: 'tower.png',
+          iconSize: [22, 47],
+          iconAnchor: [11, 23]
+        });
+
         var map = L.map('map', {
             crs: L.CRS.Simple,
-            minZoom: 0.8,
+            zoom: 1.0,
+            minZoom: 0.5,
             maxZoom: 4.5,
-            zoomDelta: 0.1,
-            zoomSnap: 0.1,
-            wheelPxPerZoomLevel: 1000,
+            zoomDelta: 0.5,
+            zoomSnap: 0.5,
+            touchZoom: true,
             maxBounds: bounds,
-            maxBoundsViscosity: 0.5,
+            maxBoundsViscosity: 0.1,
             center: [300, 300]
         });
 
         var bounds = [[-5.47,-1.89], [599.19,601.89]];
         var image = L.imageOverlay('Ignus_Map.jpg', bounds).addTo(map);
-        map.fitBounds(bounds);
 
         var threeFive = L.latLng([ 300, 500 ]);
         var threeFour = L.latLng([ 300, 400 ]);
@@ -51,7 +57,7 @@ block content
         }
         L.control.layers(null, overlays).addTo(map);
 
-        L.marker(threeFive).bindPopup("<h4>Battle Plains of Talus</h4><p>Levels: 35-60</p>").addTo(map);
+        L.marker(threeFive, { icon: towerIcon }).bindPopup("<h4>Battle Plains of Talus</h4><p>Levels: 35-60</p>").addTo(map);
         L.marker(threeFour).bindPopup("3.00N, 4.00E").addTo(map);
         L.marker(fourFive).bindPopup("4.00N, 5.00E").addTo(map);
         L.marker(fourFour).bindPopup("4.00N, 4.00E").addTo(map);
