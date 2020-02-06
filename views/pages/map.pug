@@ -29,17 +29,27 @@ block content
         var fourFive = L.latLng([ 400, 500 ]);
         var fourFour = L.latLng([ 400, 400 ]);
 
-        // Horizontal gridlines
+        // Create and add gridline layer
         var gridlines = !{JSON.stringify(gridlines)};
+        var polylineArray = [];
         for (const gridline of gridlines) {
-          L.polyline([
+          var polyline = L.polyline([
             gridline.start,
             gridline.end
           ], {
             color: '#000000',
-            weight: 2
-          }).addTo(map);
+            weight: 1
+          });
+          polylineArray.push(polyline);
         }
+        var gridLayer = L.layerGroup(polylineArray);
+        gridLayer.addTo(map);
+
+        // Create layer menu
+        var overlays = {
+          "Show Coordinate Grid": gridLayer
+        }
+        L.control.layers(null, overlays).addTo(map);
 
         L.marker(threeFive).bindPopup("<h4>Battle Plains of Talus</h4><p>Levels: 35-60</p>").addTo(map);
         L.marker(threeFour).bindPopup("3.00N, 4.00E").addTo(map);
