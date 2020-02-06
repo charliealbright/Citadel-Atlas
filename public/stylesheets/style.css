@@ -67,6 +67,11 @@ a {
   width: 48px;
 }
 
+input.leaflet-control-layers-selector {
+  transform: scale(1.5);
+  margin: 8px;
+}
+
 .layer-item {
   font-size: medium;
 }
