@@ -66,3 +66,7 @@ a {
   height: 48px;
   width: 48px;
 }
+
+.layer-item {
+  font-size: medium;
+}
