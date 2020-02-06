@@ -12,30 +12,8 @@ app.use(express.static(path.join(__dirname + '/images')));
 app.set('views', path.join(__dirname + '/views/pages'));
 app.set('view engine', 'pug');
 
-//routes/index.js
-/* GET layers json data. */
-app.get('/maplayers', function (req, res) {
-    Json.find({},{'name': 1}, function (err, docs) {
-        res.json(docs);
-    });
-});
-
-/* GET home page. */
-app.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
-});
-
-/* GET json data. */
-app.get('/mapjson/:name', function (req, res) {
-    if (req.params.name) {
-        Json.findOne({ name: req.params.name },{}, function (err, docs) {
-            res.json(docs);
-        });
-    }
-});
-
-/* GET Map page. */
-app.get('/map', function(req,res) {
+/* GET Home Page */
+app.get('/', function(req,res) {
   var gridlines = require('./resources/gridlines.json');
   res.render('map', {
     gridlines: gridlines
