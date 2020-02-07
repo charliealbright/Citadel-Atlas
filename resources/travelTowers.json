@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Raincourt",
+    "location": [136, 109]
+  },
+  {
+    "name": "Heathclyffe",
+    "location": [119, 314]
+  },
+  {
+    "name": "Raven's Perch",
+    "location": [199, 102]
+  },
+  {
+    "name": "Crystal View",
+    "location": [344, 155]
+  },
+  {
+    "name": "Venturer's Refuge",
+    "location": [481, 156]
+  },
+  {
+    "name": "Throne of Ignus",
+    "location": [288, 319]
+  },
+  {
+    "name": "High Haven",
+    "location": [434, 339]
+  },
+  {
+    "name": "Lythyk's Watchtower",
+    "location": [414, 466]
+  },
+  {
+    "name": "Warden of Talus",
+    "location": [314, 514]
+  },
+  {
+    "name": "Grimstone Spire",
+    "location": [186, 469]
+  },
+  {
+    "name": "Eastreach",
+    "location": [138, 440]
+  },
+  {
+    "name": "Palisading Light",
+    "location": [63, 276]
+  },
+  {
+    "name": "Woodland Lookout",
+    "location": [174, 335]
+  }
+]

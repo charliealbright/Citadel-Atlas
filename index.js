@@ -15,8 +15,10 @@ app.set('view engine', 'pug');
 /* GET Home Page */
 app.get('/', function(req,res) {
   var gridlines = require('./resources/gridlines.json');
+  var travelTowers = require('./resources/travelTowers.json');
   res.render('map', {
-    gridlines: gridlines
+    gridlines: gridlines,
+    travelTowers: travelTowers
   });
 });
 

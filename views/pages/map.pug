@@ -11,7 +11,8 @@ block content
         var towerIcon = L.icon({
           iconUrl: 'tower.png',
           iconSize: [22, 47],
-          iconAnchor: [11, 23]
+          iconAnchor: [11, 23],
+          popupAnchor: [0, -23]
         });
 
         var map = L.map('map', {
@@ -30,11 +31,6 @@ block content
         var bounds = [[-5.47,-1.89], [599.19,601.89]];
         var image = L.imageOverlay('Ignus_Map.jpg', bounds).addTo(map);
 
-        var threeFive = L.latLng([ 300, 500 ]);
-        var threeFour = L.latLng([ 300, 400 ]);
-        var fourFive = L.latLng([ 400, 500 ]);
-        var fourFour = L.latLng([ 400, 400 ]);
-
         // Create and add gridline layer
         var gridlines = !{JSON.stringify(gridlines)};
         var polylineArray = [];
@@ -51,16 +47,25 @@ block content
         var gridLayer = L.layerGroup(polylineArray);
         gridLayer.addTo(map);
 
+        // Add Travel Towers
+        var travelTowers = !{JSON.stringify(travelTowers)};
+        var towerArray = [];
+        for (const travelTower of travelTowers) {
+          var marker = L.marker(travelTower.location, { icon: towerIcon })
+            .bindPopup(`<h4>${travelTower.name}</h4>`);
+          towerArray.push(marker);
+        }
+
+        var towerLayer = L.layerGroup(towerArray);
+        towerLayer.addTo(map);
+
         // Create layer menu
         var overlays = {
-          "<span class='layer-item'>Show Coordinate Grid</span>": gridLayer
+          "<span class='layer-item'>Show Coordinate Grid</span>": gridLayer,
+          "<span class='layer-item'>Show Travel Towers</span>": towerLayer
         }
-        L.control.layers(null, overlays).addTo(map);
 
-        L.marker(threeFive, { icon: towerIcon }).bindPopup("<h4>Battle Plains of Talus</h4><p>Levels: 35-60</p>").addTo(map);
-        L.marker(threeFour).bindPopup("3.00N, 4.00E").addTo(map);
-        L.marker(fourFive).bindPopup("4.00N, 5.00E").addTo(map);
-        L.marker(fourFour).bindPopup("4.00N, 4.00E").addTo(map);
+        L.control.layers(null, overlays).addTo(map);
 
         map.on('click', function(e){
             var coord = e.latlng;
